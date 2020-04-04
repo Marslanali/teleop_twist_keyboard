@@ -79,7 +79,13 @@ def vels(speed,turn):
 if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 
-    pub = rospy.Publisher('cmd_vel', Twist, queue_size = 1)
+    pub1 = rospy.Publisher('/uav1/cmd_vel', Twist, queue_size = 1)
+    pub2 = rospy.Publisher('/uav2/cmd_vel', Twist, queue_size = 1)
+    pub3 = rospy.Publisher('/uav3/cmd_vel', Twist, queue_size = 1)
+    pub4 = rospy.Publisher('/uav4/cmd_vel', Twist, queue_size = 1)
+    pub5 = rospy.Publisher('/uav5/cmd_vel', Twist, queue_size = 1)
+    pub6 = rospy.Publisher('/uav6/cmd_vel', Twist, queue_size = 1)
+    
     rospy.init_node('teleop_twist_keyboard')
 
     speed = rospy.get_param("~speed", 0.5)
@@ -119,7 +125,13 @@ if __name__=="__main__":
             twist = Twist()
             twist.linear.x = x*speed; twist.linear.y = y*speed; twist.linear.z = z*speed;
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
-            pub.publish(twist)
+            pub1.publish(twist)
+	    pub2.publish(twist)
+	    pub3.publish(twist)
+	    pub4.publish(twist)
+	    pub5.publish(twist)
+	    pub6.publish(twist)
+
 
     except Exception as e:
         print(e)
@@ -128,6 +140,10 @@ if __name__=="__main__":
         twist = Twist()
         twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
         twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
-        pub.publish(twist)
-
+        pub1.publish(twist)
+	pub2.publish(twist)
+	pub3.publish(twist)
+	pub4.publish(twist)
+	pub5.publish(twist)
+	pub6.publish(twist)
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
