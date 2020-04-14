@@ -83,8 +83,7 @@ if __name__=="__main__":
     pub2 = rospy.Publisher('/uav2/cmd_vel', Twist, queue_size = 1)
     pub3 = rospy.Publisher('/uav3/cmd_vel', Twist, queue_size = 1)
     pub4 = rospy.Publisher('/uav4/cmd_vel', Twist, queue_size = 1)
-    pub5 = rospy.Publisher('/uav5/cmd_vel', Twist, queue_size = 1)
-    pub6 = rospy.Publisher('/uav6/cmd_vel', Twist, queue_size = 1)
+
     
     rospy.init_node('teleop_twist_keyboard')
 
@@ -129,8 +128,7 @@ if __name__=="__main__":
 	    pub2.publish(twist)
 	    pub3.publish(twist)
 	    pub4.publish(twist)
-	    pub5.publish(twist)
-	    pub6.publish(twist)
+
 
 
     except Exception as e:
@@ -144,6 +142,4 @@ if __name__=="__main__":
 	pub2.publish(twist)
 	pub3.publish(twist)
 	pub4.publish(twist)
-	pub5.publish(twist)
-	pub6.publish(twist)
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
